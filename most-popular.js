@@ -1,6 +1,6 @@
 "use strict";
 
-/* This function takes in a string and returns the most common letter */
+/* This function takes in a string and returns the first of the most common letter */
 
 function mostPopular(word) {
   let ltrCount = {};
