@@ -1,25 +1,27 @@
 "use strict";
 
-/* function takes in an array of words and returns an array of calculated scores for each word */ 
+/* function takes in an array of words and returns an array of calculated scores for each word */
 function wordScores(words) {
-  let scores = [];
 
   // Feedback: Could create a callback function that scores a single word (and use .map to call)
-  for (let word of words) {
-    let wordScore = 0;
+  return words.map(calculateWordScore);
+}
 
-    for (let letter of word) {
-      // For an invalid character, set wordScore to null and break. 
-      if (!(letter.toUpperCase() in SCORE_KEY)) {
-        wordScore = null;
-        break;
-      }
+/* function that takes in a word and calculates its corresponding score */
+function calculateWordScore(word) {
+  let wordScore = 0;
 
-      wordScore += SCORE_KEY[letter.toUpperCase()];
+  for (let letter of word) {
+    // For an invalid character, set wordScore to null and break. 
+    if (!(letter.toUpperCase() in SCORE_KEY)) {
+      return null;
     }
-    scores.push(wordScore);
+
+    wordScore += SCORE_KEY[letter.toUpperCase()];
   }
-  return scores;
+
+  return wordScore;
+
 }
 
 // Feedback: Another option of name is LETTER_TO_SCORE (what object is helping with)
